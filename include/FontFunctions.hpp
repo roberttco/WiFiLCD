@@ -18,7 +18,6 @@
 #include <Fonts/Futuri_Condensed_Light_Oblique50pt7b.h>
 #include <Fonts/Futuri_Condensed_Light_Oblique60pt7b.h>
 
-
 typedef struct _FontMap
 {
   char *name;
