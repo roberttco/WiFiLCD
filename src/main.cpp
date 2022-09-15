@@ -11,6 +11,9 @@
 
 #include "GFXPrimitiveHandlers.hpp"
 
+// Check out https://chrishewett.com/blog/true-rgb565-colour-picker/ to pick colors
+
+
 // initialize ST7789 TFT library with hardware SPI module
 // SCK (CLK) ---> NodeMCU pin D5 (GPIO14)
 // MOSI(DIN) ---> NodeMCU pin D7 (GPIO13)
@@ -22,7 +25,6 @@ CmdCallback<8> cmdCallbackP;
 //CmdBuffer<512> myBuffer;
 CmdParser     myParser;
 
-int rotation = 2;
 bool connecting = true;
 bool waiting = false;
 
@@ -43,7 +45,7 @@ void setup(void)
   tft.init(240, 240, SPI_MODE2);    // Init ST7789 display 240x240 pixel
 
   //
-  tft.setRotation(rotation);
+  tft.setRotation(3); // USB connector on the right 
   tft.fillScreen(ST77XX_BLACK);
   tft.setTextWrap(false);
 
@@ -140,8 +142,7 @@ void onConnectionEstablished()
       case 1: // toggle rotation
       case 2: // toggle rotation
       case 3: // toggle rotation
-        rotation = cmd;
-        tft.setRotation(rotation);
+        tft.setRotation(cmd);
         break;
       default:
         break; 
